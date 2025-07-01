@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { packages: ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+          try {
+            var jsonData = JSON.parse(Android.getChartData());
+            console.log("Received Data: ", jsonData);
+
+            var dataArray = [['Kategori', 'Jumlah']];
+            const colors = [
+                '#FF0000',
+                '#00FF00',
+                '#0000FF',
+                '#FFFF00',
+                '#FF00FF',
+                '#00FFFF',
+              ];
+
+            // Mengisi data dan warna dari setiap transaksi
+            var kategoriMap = {};
+            jsonData.forEach(function(item, index) {
+              const color = colors[index % colors.length];
+              kategoriMap[item.kategori] = {
+                jumlah: parseFloat(item.jumlah),
+                warna: color,
+                tipe: item.tipe
+              };
+              dataArray.push([item.kategori, parseFloat(item.jumlah)]);
+            });
+
+            var data = google.visualization.arrayToDataTable(dataArray);
+
+            var options = {
+              title: 'Pemasukan vs Pengeluaran',
+              pieHole: 0.4,
+              titleTextStyle: {
+                color: '#333',
+                fontSize: 24,
+                bold: true
+              },
+              pieSliceText: 'percentage',
+              chartArea: {
+                left: 50,
+                top: 50,
+                width: '75%',
+                height: '75%'
+              }
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('donutChart'));
+            chart.draw(data, options);
+
+            // Render daftar transaksi di bawah grafik dengan warna
+            renderTransactionList(Object.keys(kategoriMap).map(key => ({
+              kategori: key,
+              jumlah: kategoriMap[key].jumlah,
+              tipe: kategoriMap[key].tipe,
+              warna: kategoriMap[key].warna
+            })));
+          } catch (error) {
+            console.error("Error drawing chart or processing data", error);
+          }
+        }
+
+        function renderTransactionList(data) {
+          var transactionListDiv = document.getElementById('transactionList');
+          transactionListDiv.innerHTML = ""; // Bersihkan daftar sebelumnya
+
+          if (data.length > 0) {
+            data.forEach(function(item) {
+              var listItem = document.createElement('div');
+              listItem.style.backgroundColor = item.warna;
+              listItem.style.color = "#FFFFFF"; // Ubah teks jadi putih agar terlihat lebih kontras
+              listItem.style.padding = "5px";
+              listItem.style.marginBottom = "4px";
+              listItem.style.borderRadius = "4px";
+              listItem.style.fontSize = "16px";
+              listItem.innerText = `${item.kategori} - ${item.jumlah} (${item.tipe})`;
+              transactionListDiv.appendChild(listItem);
+            });
+          } else {
+            transactionListDiv.innerText = "No transactions available";
+          }
+        }
+    </script>
+</head>
+<body>
+<!-- Bagian Donut Chart -->
+<div id="donutChart" style="width: 100%; height: 400px;"></div>
+
+<!-- Daftar transaksi di bawah grafik -->
+<div id="transactionList" style="padding: 10px; font-size: 14px; border: 1px solid #ccc; margin-top: 20px;"></div>
+</body>
+</html>

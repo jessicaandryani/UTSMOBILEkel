@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
+
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/ijo1"
+        android:title="tentang"
+        android:titleTextColor="@android:color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Judul Aplikasi -->
+    <TextView
+        android:id="@+id/app_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DOMPETKU"
+        android:textColor="@color/ijo1"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <!-- Deskripsi Aplikasi -->
+    <TextView
+        android:id="@+id/app_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Aplikasi Catatan Keuangan adalah solusi praktis untuk membantu pengguna dalam mengelola dan memantau pengeluaran serta pemasukan mereka secara efisien. Dengan aplikasi ini, pengguna dapat mencatat transaksi keuangan mereka dengan mudah, mengelompokkan pengeluaran dalam berbagai kategori seperti belanja, transportasi, makan, dan hiburan, serta menentukan jumlah uang yang terlibat. Selain itu, aplikasi ini menyediakan fitur untuk membuat laporan dan grafik keuangan yang memudahkan analisis kondisi keuangan pengguna, serta pengingat anggaran untuk memastikan pengguna tetap berada dalam batasan yang telah ditetapkan."
+        android:textSize="16sp"
+        android:layout_margin="30dp"
+        android:justificationMode="inter_word"
+        android:textColor="@color/black"
+        android:lineSpacingExtra="10dp"
+        app:layout_constraintTop_toBottomOf="@id/app_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <!-- Versi Aplikasi -->
+    <TextView
+        android:id="@+id/app_version"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Versi: 1.0.0"
+        android:textSize="20sp"
+        android:layout_margin="30dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/app_description"
+        app:layout_constraintBaseline_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

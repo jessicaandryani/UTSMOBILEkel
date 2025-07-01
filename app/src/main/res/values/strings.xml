@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">DOMPETKU</string>
+
+    <string name="selamat_datang">Silahkan Daftar</string>
+    <string name="enter_username">Enter Username</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="enter_confirm_password">Enter Confirmation Password</string>
+    <string name="register">REGISTER</string>
+    <string name="login">LOGIN</string>
+    <string name="datang">Selamat Datang</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="kategori_pemasukan">
+        <item>Gaji</item>
+        <item>Bonus</item>
+        <item>Investasi</item>
+        <item>Lain-lain</item>
+    </string-array>
+
+    <string-array name="kategori_pengeluaran">
+        <item>Belanja</item>
+        <item>Makanan</item>
+        <item>Transportasi</item>
+        <item>Hiburan</item>
+        <item>Tagihan</item>
+    </string-array>
+
+    <string name="notifikasi_1">Notifikasi 1</string>
+    <string name="notifikasi_2">Notifikasi 2</string>
+    <string name="notifikasi_3">Notifikasi 3</string>
+
+    <string name="google_api_key">AIzaSyAGQ0NpW0mkeTMY2Y_6L6EqMCxou67chOM</string>
+</resources>
